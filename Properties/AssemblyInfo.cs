@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ITULib")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("IxDLib")]
+[assembly: AssemblyDescription("ITU Interaction Design Lab (IxDLab) Netduino libraries")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ITULib")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyCompany("IT University of Copenhagen")]
+[assembly: AssemblyProduct("IxDLib")]
+[assembly: AssemblyCopyright("CC-BY-SA 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
