@@ -4,7 +4,9 @@ using Microsoft.SPOT.Hardware;
 
 namespace IxDLib {
     /// <summary>
-    /// Simple push-button/interrupt port wrapper.
+    /// Simple push-button/interrupt port driver.
+    /// v0.1 by Lars Toft Jacobsen, ITU, IxDLab
+    /// CC-BY-SA
     /// </summary>
     public class PushButton : IDisposable {
         

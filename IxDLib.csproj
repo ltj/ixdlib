@@ -31,7 +31,7 @@
   <Import Project="$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets" />
   <ItemGroup>
     <Compile Include="ADXL345.cs" />
-    <Compile Include="I2CUnit.cs" />
+    <Compile Include="Wire.cs" />
     <Compile Include="IdXUtility.cs" />
     <Compile Include="LEDBasic.cs" />
     <Compile Include="LEDRGB.cs" />

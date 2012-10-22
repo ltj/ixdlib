@@ -3,7 +3,12 @@ using Microsoft.SPOT;
 using Microsoft.SPOT.Hardware;
 
 namespace IxDLib {
-    public class ADXL345 : I2CUnit {
+    /// <summary>
+    /// Driver for the Analog Devices ADXL345 digital accellerometer.
+    /// v0.1 by Lars Toft Jacobsen, ITU, IxDLab
+    /// CC-BY-SA
+    /// </summary>
+    public class ADXL345 : Wire {
 
         private const byte ADDR_ALT_HIGH = 0x1D;
         private const byte ADDR_ALT_LOW = 0x53;
@@ -52,10 +57,17 @@ namespace IxDLib {
             : base(ADDR_ALT_LOW) {
         }
 
+        /// <summary>
+        /// Put the ADXL345 into measurement power mode
+        /// </summary>
         public void PowerOn() {
             WriteToRegister((byte)Registers.POWER_CTL, 8);
         }
 
+        /// <summary>
+        /// Read accelleration data, and save the G converted 
+        /// values in xyz array.
+        /// </summary>
         public void readAccel() {
             byte[] buffer = new byte[6];
             short[] xyz = new short[3];
@@ -128,6 +140,10 @@ namespace IxDLib {
             this.m_gain = s;
         }
 
+        /// <summary>
+        /// Get the measurement +-xG range
+        /// </summary>
+        /// <returns>+-G value</returns>
         private short getRange() {
             byte[] buf = new byte[1];
             ReadFromRegister((byte)Registers.DATA_FORMAT, buf);

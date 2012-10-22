@@ -4,6 +4,8 @@ using Microsoft.SPOT;
 namespace IxDLib {
     /// <summary>
     /// Utility class for Arduino ports etc.
+    /// v0.1 by Lars Toft Jacobsen, ITU, IxDLab
+    /// CC-BY-SA
     /// </summary>
     public static class IdXUtility {
 
@@ -11,10 +13,10 @@ namespace IxDLib {
         /// Arduino constrain function
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="x">constrained value</param>
-        /// <param name="a">lower bound</param>
-        /// <param name="b">upper bound</param>
-        /// <returns></returns>
+        /// <param name="x">Value to constrain</param>
+        /// <param name="a">Lower bound</param>
+        /// <param name="b">Upper bound</param>
+        /// <returns>Constrained value</returns>
         public static int Constrain(int x, int a, int b) {
             if (x < a) return a;
             if (x > b) return b;

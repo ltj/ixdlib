@@ -4,8 +4,10 @@ using Microsoft.SPOT.Hardware;
 
 namespace IxDLib {
     /// <summary>
-    /// Simple LED wrapper class.
+    /// Simple LED driver.
     /// Blinkenlights!!
+    /// v0.1 by Lars Toft Jacobsen, ITU, IxDLab
+    /// CC-BY-SA
     /// </summary>
     class LEDBasic : IDisposable {
         

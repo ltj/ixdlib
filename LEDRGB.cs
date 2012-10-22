@@ -21,6 +21,8 @@ namespace IxDLib {
     /// <summary>
     /// Simple RGB LED class managing three PWM channels
     /// and color mixing using 8bit RGB color values.
+    /// v0.1 by Lars Toft Jacobsen, ITU, IxDLab
+    /// CC-BY-SA
     /// </summary>
     public class LEDRGB : IDisposable {
 
