@@ -1,6 +1,7 @@
 using System;
 using Microsoft.SPOT;
 using Microsoft.SPOT.Hardware;
+using System.Threading;
 
 namespace IxDLib {
     /// <summary>
@@ -9,9 +10,10 @@ namespace IxDLib {
     /// v0.1 by Lars Toft Jacobsen, ITU, IxDLab
     /// CC-BY-SA
     /// </summary>
-    class LEDBasic : IDisposable {
+    public class LEDBasic : IDisposable {
         
         protected OutputPort led;
+        private Timer blinktimer;
 
         /// <summary>
         /// LED on/off state property
@@ -35,6 +37,28 @@ namespace IxDLib {
         }
 
         public LEDBasic(Cpu.Pin pin) : this(pin, false) { }
+
+        public void On() {
+            led.Write(true);
+        }
+
+        public void Off() {
+            led.Write(false);
+        }
+
+        public void Blink(int interval, uint reps) {
+            reps *= 2;
+            blinktimer = new Timer(new TimerCallback((Object data) => {
+                if (reps-- != 0) {
+                    led.Write(!led.Read());
+                }
+                else {
+                    this.blinktimer.Dispose();
+                    Off();
+                }
+            }), null, 0, interval);
+        }
+
 
         /// <summary>
         /// Clean up LED
