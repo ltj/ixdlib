@@ -6,8 +6,19 @@ using System.Threading;
 
 namespace IxDLib {
 
+    /// <summary>
+    /// Event handler for WebServer OnContextReceived events,
+    /// ie. receiving an HTTP request.
+    /// </summary>
+    /// <param name="sender">WebServer instance</param>
+    /// <param name="context">Request context</param>
     public delegate void ContextReceivedEventHandler(object sender, HttpListenerContext context);
 
+    /// <summary>
+    /// Tiny web server on a thread (not so tiny actually - the System.Http assembly is huge!)
+    /// v0.1 by Lars Toft Jacobsen, ITU, IxDLab
+    /// CC-BY-SA
+    /// </summary>
     public class WebServer {
 
         private HttpListener server;
