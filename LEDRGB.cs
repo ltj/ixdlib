@@ -32,6 +32,7 @@ namespace IxDLib {
 
         RGBColor color;
         private Timer mixtimer;
+        private Timer blinktimer;
         private bool seqrunning;
 
         /// <summary>
@@ -60,6 +61,16 @@ namespace IxDLib {
                 red.Duration = color.Red;
                 green.Duration = color.Green;
                 blue.Duration = color.Blue;
+            }
+        }
+
+        /// <summary>
+        /// Return true if some power is sent to the leds,
+        /// otherwise false.
+        /// </summary>
+        public bool State {
+            get {
+                return (red.Duration > 0 || green.Duration > 0 || blue.Duration > 0);
             }
         }
 
@@ -132,5 +143,29 @@ namespace IxDLib {
             blue.Dispose();
         }
 
+        /// <summary>
+        /// Blink the led(s) using one color
+        /// </summary>
+        /// <param name="interval">time between and duration of blinks</param>
+        /// <param name="reps">No. repetitions</param>
+        /// <param name="color">Blink color</param>
+        public void Blink(int interval, uint reps, RGBColor color) {
+            reps *= 2;
+            this.Color = color;
+            blinktimer = new Timer(new TimerCallback((Object data) => {
+                if (reps-- != 0) {
+                    if (this.State) {
+                        this.Off();
+                    }
+                    else {
+                        this.On();
+                    }
+                }
+                else {
+                    this.blinktimer.Dispose();
+                    Off();
+                }
+            }), null, 0, interval);
+        }
     }
 }
