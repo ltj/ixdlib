@@ -127,9 +127,21 @@ namespace IxDLib {
         /// Stop demo sequence
         /// </summary>
         public void StopSequence() {
-            mixtimer.Dispose();
-            seqrunning = false;
-            On();
+            if (mixtimer != null) {
+                mixtimer.Dispose();
+                seqrunning = false;
+                On();
+            }
+        }
+
+        /// <summary>
+        /// Stop blinking
+        /// </summary>
+        public void StopBlink() {
+            if (blinktimer != null) {
+                blinktimer.Dispose();
+                On();
+            }
         }
 
         /// <summary>
@@ -165,7 +177,7 @@ namespace IxDLib {
                     this.blinktimer.Dispose();
                     Off();
                 }
-            }), null, 0, interval);
+            }), null, 10, interval);
         }
     }
 }

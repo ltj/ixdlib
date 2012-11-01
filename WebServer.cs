@@ -34,9 +34,11 @@ namespace IxDLib {
         public WebServer(string prefix, int port) {
             server = new HttpListener(prefix, port);
             server.Start();
+        }
+
+        public void Start() {
             connection = new Thread(Context);
             connection.Start();
-
         }
 
         // Set prefix, standard port numbers (80 or 443)
